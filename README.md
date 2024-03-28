@@ -1,1 +1,1 @@
-# dotrez-training-clean
+# dotrez-training-clean-solution
