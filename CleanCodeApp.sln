@@ -7,8 +7,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanCodeApp.Domain", "Clea
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanCodeApp.Application", "CleanCodeApp.Application\CleanCodeApp.Application.csproj", "{403348BC-3B52-492E-A56D-CC6997A9EA6C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanCodeApp.Adapter", "CleanCodeApp.Adapter\CleanCodeApp.Adapter.csproj", "{1FC8A5DA-1E79-4375-8B54-76623B5C0BEA}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanCodeApp.Infrastructure", "CleanCodeApp.Infrastructure\CleanCodeApp.Infrastructure.csproj", "{A52FF92E-EE80-467B-BB53-EE1645043AF8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CleanCodeApp.Presentation", "CleanCodeApp.Presentation\CleanCodeApp.Presentation.csproj", "{4A447686-FBBC-4A0D-8056-B52108D5701A}"
