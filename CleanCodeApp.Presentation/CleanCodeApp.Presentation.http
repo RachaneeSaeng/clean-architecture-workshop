@@ -1,4 +1,4 @@
-@CleanCodeApp.Presentation_HostAddress = http://localhost:5072
+@CleanCodeApp.Presentation_HostAddress = http://localhost:5145
 
 GET {{CleanCodeApp.Presentation_HostAddress}}/weatherforecast/
 Accept: application/json
