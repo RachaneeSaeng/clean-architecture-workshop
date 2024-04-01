@@ -1,23 +1,21 @@
 ﻿namespace CleanCodeApp.Domain.Entities;
 
-public class ShowTime
+public class ShowTime(Movie movie, Theater theater, DateTime startTime, DateTime endTime)
 {
-    public Guid Id { get; private set; }
-    public Movie Movie { get; private set; }
-    public DateTime StartTime { get; private set; }
-    public DateTime EndTime { get; private set; }
-    public Theater Theater { get; private set; }
-    public List<Seat> Seats { get; private set; }
+    public Guid Id { get; private set; } = Guid.NewGuid();
+    public Movie Movie { get; private set; } = movie;
+    public DateTime StartTime { get; private set; } = startTime;
+    public DateTime EndTime { get; private set; } = endTime;
+    public Theater Theater { get; private set; } = theater;
+    public List<Seat> Seats { get; private set; } = InitialiseSeats(theater.NumberOfRow, theater.NumberOfSeatsPerRow, theater.SeatPrice);
     public int SeatPrice { get; private set; }
 
-    public ShowTime(Movie movie, Theater theater, DateTime startTime, DateTime endTime)
+    public void ReserveSeat(string row, int number)
     {
-        Id = Guid.NewGuid();
-        Movie = movie;
-        Theater = theater;
-        StartTime = startTime;
-        EndTime = endTime;
-        Seats = InitialiseSeats(theater.NumberOfRow, theater.NumberOfSeatsPerRow, theater.SeatPrice);
+        var seat = Seats.FirstOrDefault(s => s.Row == row && s.Number == number) ??
+                    throw new InvalidOperationException("There is no seat ${row}${number} in this showtime");
+
+        seat.Reserve();
     }
 
     private static List<Seat> InitialiseSeats(int numberOfRow, int numberOfSeatsPerRow, int seatPrice)
@@ -42,10 +40,5 @@ public class ShowTime
 
         // 'A' has an ASCII value of 65, add number - 1 to get the desired character
         return (char)('A' + number - 1);
-    }
-
-    public void ReserveSeat(string row, int number)
-    {
-        Seats.FirstOrDefault(s => s.Row == row && s.Number == number)?.Reserve();
     }
 }

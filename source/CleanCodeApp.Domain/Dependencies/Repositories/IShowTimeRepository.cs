@@ -4,5 +4,7 @@ namespace CleanCodeApp.Domain.Dependencies.Repositories;
 
 public interface IShowTimeRepository
 {
-    void Save(ShowTime showTime);
+    public List<Movie> GetNowShowingMovies();
+
+    public List<ShowTime> GetShowTimesByMovieId(Guid movieId);
 }
