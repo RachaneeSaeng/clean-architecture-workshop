@@ -1,5 +1,17 @@
 public class MovieRepository
 {
+    // NOTE: Singleton instance may not be the best practice to create new instance of object
+    // we use in just to accelerate development speed of the workshop only
+    private static MovieRepository _instance;
+    public static MovieRepository Instance
+    {
+        get
+        {
+            _instance ??= new MovieRepository();
+            return _instance;
+        }
+    }
+
     private static readonly Movie[] movies = [
         new Movie("Godzilla x Kong: The New Empire", TimeSpan.FromHours(1.92), "Godzilla and the almighty Kong face a colossal threat hidden deep within the planet, challenging their very existence and the survival of the human race."),
         new Movie("Kung Fu Panda 4", TimeSpan.FromHours(1.6), "Kung Fu Panda 4 is a 2024 American animated martial arts comedy film produced by DreamWorks Animation and distributed by Universal Pictures. It is the fourth installment in the Kung Fu Panda franchise and the sequel to Kung Fu Panda 3"),
