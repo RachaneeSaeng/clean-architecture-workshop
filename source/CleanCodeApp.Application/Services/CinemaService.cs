@@ -34,6 +34,11 @@ public class CinemaService(IMovieRepository movieRepository,
         return _showTimeRepository.GetShowTimesByMovieId(movieId);
     }
 
+    public ShowTime GetShowTimeById(Guid showtimeId)
+    {
+        return _showTimeRepository.GetById(showtimeId);
+    }
+
     public Booking CreateBooking(Guid showtimeId, List<string> selectedSeats, string customerAccountId)
     {
         // ensure that seat is in format {row}{number} such as A10

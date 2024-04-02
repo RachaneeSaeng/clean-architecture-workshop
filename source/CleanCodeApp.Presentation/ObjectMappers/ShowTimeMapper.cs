@@ -5,17 +5,27 @@ namespace CleanCodeApp.Presentation.ObjectMappers;
 
 public static class ShowTimeMapper
 {
-    public static ShowTimeDto ToDto(this ShowTime source)
+    public static IEnumerable<ShowTimeDto> ToDto(this List<ShowTime> sources)
     {
-        return new ShowTimeDto()
+        return sources
+        .Select(s => new ShowTimeDto()
+        {
+            Id = s.Id,
+            StartTime = s.StartTime,
+            EndTime = s.EndTime,
+            TheaterName = s.Theater.Name
+        });
+    }
+
+    public static ShowTimeWithSeatsDto ToDto(this ShowTime source)
+    {
+        return new ShowTimeWithSeatsDto()
         {
             Id = source.Id,
-            MovieId = source.Movie.Id,
             StartTime = source.StartTime,
             EndTime = source.EndTime,
             TheaterName = source.Theater.Name,
-            Seats = source.Seats.Select(s => s.ToDto()).ToList(),
-            SeatPrice = source.SeatPrice
+            Seats = source.Seats.Select(s => s.ToDto()).ToList()
         };
     }
 }

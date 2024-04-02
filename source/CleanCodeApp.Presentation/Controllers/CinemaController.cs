@@ -39,7 +39,15 @@ public class CinemaController(CinemaService cinemaService) : ControllerBase
     public IEnumerable<ShowTimeDto> GetShowTimesByMovieId([FromRoute] Guid movieId)
     {
         var showTimes = _cinemaService.GetShowTimesByMovieId(movieId);
-        return showTimes.Select(s => s.ToDto());
+        return showTimes.ToDto();
+    }
+
+    [HttpGet]
+    [Route("GetShowTimesById/{showtimeId}")]
+    public ShowTimeWithSeatsDto GetShowTimesById([FromRoute] Guid showtimeId)
+    {
+        var showTime = _cinemaService.GetShowTimeById(showtimeId);
+        return showTime.ToDto();
     }
 
     [HttpPost]
