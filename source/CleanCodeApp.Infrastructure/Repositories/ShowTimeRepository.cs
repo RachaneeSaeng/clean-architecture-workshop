@@ -8,7 +8,7 @@ public class ShowTimeRepository : IShowTimeRepository
     private readonly List<ShowTime> ShowTimes;
 
     // this is just a temp constructor to mock up ShowTimes data
-    public ShowTimeRepository(MovieRepository movieRepo, TheaterRepository theaterRepo)
+    public ShowTimeRepository(IMovieRepository movieRepo, ITheaterRepository theaterRepo)
     {
         ShowTime GenShowTime(string movieTitle, string theaterName, DateTime startTime, DateTime endTime)
         {
