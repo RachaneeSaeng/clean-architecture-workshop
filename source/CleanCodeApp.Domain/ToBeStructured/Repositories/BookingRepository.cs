@@ -1,4 +1,4 @@
-public class BookingRepository : IBookingRepository
+public class BookingRepository
 {
     private static readonly List<Booking> Bookings = [];
 

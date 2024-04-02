@@ -1,7 +1,7 @@
-public class BookingService(IShowTimeRepository showtimeRepository, IBookingRepository bookingRepository)
+public class BookingService(ShowTimeRepository showtimeRepository, BookingRepository bookingRepository)
 {
-    private readonly IShowTimeRepository _showtimeRepository = showtimeRepository;
-    private readonly IBookingRepository _bookingRepository = bookingRepository;
+    private readonly ShowTimeRepository _showtimeRepository = showtimeRepository;
+    private readonly BookingRepository _bookingRepository = bookingRepository;
 
     public Booking CreateBooking(Guid showtimeId, List<string> selectedSeats, string customerAccountId)
     {

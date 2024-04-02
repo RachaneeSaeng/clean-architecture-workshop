@@ -1,4 +1,4 @@
-public class MovieRepository : IMovieRepository
+public class MovieRepository
 {
     private static readonly Movie[] movies = [
         new Movie("Godzilla x Kong: The New Empire", TimeSpan.FromHours(1.92), "Godzilla and the almighty Kong face a colossal threat hidden deep within the planet, challenging their very existence and the survival of the human race."),

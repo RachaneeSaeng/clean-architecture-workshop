@@ -1,4 +1,4 @@
-public class DefaultPaymentHttpClient : IPaymentHttpClient
+public class DefaultPaymentHttpClient
 {
     public string ProcessPayment(Booking booking)
     {

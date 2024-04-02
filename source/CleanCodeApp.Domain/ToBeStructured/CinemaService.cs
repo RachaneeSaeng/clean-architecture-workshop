@@ -1,11 +1,11 @@
-﻿public class CinemaService(IMovieRepository movieRepository,
-    IShowTimeRepository showTimeRepository,
-    IPaymentHttpClient paymentHttpClient,
+﻿public class CinemaService(MovieRepository movieRepository,
+    ShowTimeRepository showTimeRepository,
+    DefaultPaymentHttpClient paymentHttpClient,
     BookingService bookingService)
 {
-    private readonly IMovieRepository _movieRepository = movieRepository;
-    private readonly IShowTimeRepository _showTimeRepository = showTimeRepository;
-    private readonly IPaymentHttpClient _paymentHttpClient = paymentHttpClient;
+    private readonly MovieRepository _movieRepository = movieRepository;
+    private readonly ShowTimeRepository _showTimeRepository = showTimeRepository;
+    private readonly DefaultPaymentHttpClient _paymentHttpClient = paymentHttpClient;
     private readonly BookingService _bookingService = bookingService;
 
     public List<Movie> GetNowShowingMovies()

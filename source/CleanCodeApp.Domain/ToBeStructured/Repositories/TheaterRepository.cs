@@ -1,4 +1,4 @@
-public class TheaterRepository : ITheaterRepository
+public class TheaterRepository
 {
     private static readonly Theater[] Theaters = [
         new Theater("Normal", 15, 20, 250),
