@@ -1,5 +1,5 @@
 using CleanCodeApp.Domain.Dependencies.Repositories;
-using CleanCodeApp.Domain.Entities;
+using CleanCodeApp.Domain.ValueObjects;
 
 namespace CleanCodeApp.Infrastructure.Repositories;
 

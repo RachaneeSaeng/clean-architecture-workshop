@@ -1,6 +1,4 @@
-using System.Reflection.Metadata.Ecma335;
-
-namespace CleanCodeApp.Domain.Entities;
+namespace CleanCodeApp.Domain.ValueObjects;
 
 public class Theater(string name, int numberOfRow, int numberOfSeatsPerRow, int seatPrice)
 {

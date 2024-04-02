@@ -1,5 +1,3 @@
-using System.Reflection.Metadata;
-
 namespace CleanCodeApp.Domain.Entities;
 
 public class Seat(string row, int number, int price)

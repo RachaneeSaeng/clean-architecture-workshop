@@ -1,4 +1,4 @@
-using CleanCodeApp.Domain.Entities;
+using CleanCodeApp.Domain.ValueObjects;
 
 namespace CleanCodeApp.Domain.Dependencies.Repositories;
 

@@ -1,4 +1,6 @@
-﻿namespace CleanCodeApp.Domain.Entities;
+﻿using CleanCodeApp.Domain.ValueObjects;
+
+namespace CleanCodeApp.Domain.Entities;
 
 public class ShowTime(Movie movie, Theater theater, DateTime startTime, DateTime endTime)
 {
