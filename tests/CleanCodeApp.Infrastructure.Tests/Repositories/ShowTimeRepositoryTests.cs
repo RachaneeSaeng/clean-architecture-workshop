@@ -14,10 +14,10 @@ public class ShowTimeRepositoryTests
         var nowShowingMovies = showtimeRepo.GetNowShowingMovies();
 
         // Assert
-        Assert.Equal(3, nowShowingMovies.Count());
-        Assert.True(nowShowingMovies.Any(m => m.Title == "Godzilla x Kong: The New Empire"));
-        Assert.True(nowShowingMovies.Any(m => m.Title == "Kung Fu Panda 4"));
-        Assert.True(nowShowingMovies.Any(m => m.Title == "หอแต๋วแตก แหกสัปะหยด"));
+        Assert.Equal(3, nowShowingMovies.Count);
+        Assert.Contains(nowShowingMovies, m => m.Title == "Godzilla x Kong: The New Empire");
+        Assert.Contains(nowShowingMovies, m => m.Title == "Kung Fu Panda 4");
+        Assert.Contains(nowShowingMovies, m => m.Title == "หอแต๋วแตก แหกสัปะหยด");
     }
 
     [Fact]
@@ -32,7 +32,7 @@ public class ShowTimeRepositoryTests
         var showTimes = showtimeRepo.GetShowTimesByMovieId(movieRepo.SearchByTitle("John Wick").First().Id);
 
         // Assert
-        Assert.Equal(2, showTimes.Count());
+        Assert.Equal(2, showTimes.Count);
     }
 
     [Fact]
@@ -47,7 +47,7 @@ public class ShowTimeRepositoryTests
         var showTimes = showtimeRepo.GetShowTimesByMovieId(movieRepo.SearchByTitle("Joker").First().Id);
 
         // Assert
-        Assert.Equal(0, showTimes.Count());
+        Assert.Empty(showTimes);
     }
 
     [Fact]
@@ -62,6 +62,6 @@ public class ShowTimeRepositoryTests
         var showTimes = showtimeRepo.GetShowTimesByMovieId(Guid.NewGuid());
 
         // Assert
-        Assert.Equal(0, showTimes.Count());
+        Assert.Empty(showTimes);
     }
 }
