@@ -1,6 +1,6 @@
 ﻿using CleanCodeApp.Domain.Dependencies.Repositories;
 using CleanCodeApp.Domain.Entities;
-using MovieBooking.Domain.Services;
+using CleanCodeApp.Domain.Services;
 
 namespace CleanCodeApp.Application.Services;
 

@@ -1,7 +1,7 @@
 using CleanCodeApp.Domain.Dependencies.Repositories;
 using CleanCodeApp.Domain.Entities;
 
-namespace MovieBooking.Domain.Services;
+namespace CleanCodeApp.Domain.Services;
 
 public class BookingService(IShowTimeRepository showtimeRepository, IBookingRepository bookingRepository)
 {

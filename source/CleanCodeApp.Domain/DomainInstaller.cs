@@ -1,5 +1,5 @@
 using Microsoft.Extensions.DependencyInjection;
-using MovieBooking.Domain.Services;
+using CleanCodeApp.Domain.Services;
 
 public static class DomainInstaller
 {
