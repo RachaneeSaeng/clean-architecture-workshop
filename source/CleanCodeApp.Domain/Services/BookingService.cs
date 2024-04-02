@@ -1,8 +1,3 @@
-using CleanCodeApp.Domain.Dependencies.Repositories;
-using CleanCodeApp.Domain.Entities;
-
-namespace MovieBooking.Domain.Services;
-
 public class BookingService(IShowTimeRepository showtimeRepository, IBookingRepository bookingRepository)
 {
     private readonly IShowTimeRepository _showtimeRepository = showtimeRepository;

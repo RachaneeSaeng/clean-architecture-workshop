@@ -1,5 +1,3 @@
-namespace CleanCodeApp.Domain.Entities;
-
 public class Booking(ShowTime showTime, List<Seat> seats, string customerAccountId)
 {
     public Guid Id { get; private set; } = Guid.NewGuid();

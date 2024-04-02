@@ -1,7 +1,3 @@
-using CleanCodeApp.Domain.Entities;
-
-namespace CleanCodeApp.Infrastructure.HttpClients;
-
 public class DefaultPaymentHttpClient : IPaymentHttpClient
 {
     public string ProcessPayment(Booking booking)

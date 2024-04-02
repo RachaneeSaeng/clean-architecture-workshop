@@ -1,6 +1,3 @@
-using CleanCodeApp.Domain.Dependencies.Repositories;
-using CleanCodeApp.Infrastructure.HttpClients;
-using CleanCodeApp.Infrastructure.Repositories;
 using Microsoft.Extensions.DependencyInjection;
 
 public static class InfrastructureInstaller

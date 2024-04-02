@@ -1,5 +1,3 @@
-namespace CleanCodeApp.Presentation.RequestModels;
-
 public class CreateBookingRequestModel
 {
     public Guid ShowtimeId { get; set; }

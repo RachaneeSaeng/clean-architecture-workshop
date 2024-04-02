@@ -1,5 +1,3 @@
-namespace CleanCodeApp.Presentation.DTOs;
-
 public class BookingDto
 {
     public Guid Id { get; set; }

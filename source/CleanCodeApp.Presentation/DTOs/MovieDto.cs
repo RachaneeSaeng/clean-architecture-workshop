@@ -1,6 +1,4 @@
-﻿namespace CleanCodeApp.Presentation.DTOs;
-
-public class MovieDto
+﻿public class MovieDto
 {
     public Guid Id { get; set; }
     public string Title { get; set; }

@@ -1,8 +1,3 @@
-using CleanCodeApp.Domain.Entities;
-using CleanCodeApp.Presentation.DTOs;
-
-namespace CleanCodeApp.Presentation.ObjectMappers;
-
 public static class SeatMapper
 {
     public static SeatDto ToDto(this Seat source)

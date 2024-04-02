@@ -1,8 +1,4 @@
-﻿using CleanCodeApp.Domain.ValueObjects;
-
-namespace CleanCodeApp.Domain.Entities;
-
-public class ShowTime(Movie movie, Theater theater, DateTime startTime, DateTime endTime)
+﻿public class ShowTime(Movie movie, Theater theater, DateTime startTime, DateTime endTime)
 {
     public Guid Id { get; private set; } = Guid.NewGuid();
     public Movie Movie { get; private set; } = movie;

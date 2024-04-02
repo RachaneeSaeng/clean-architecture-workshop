@@ -1,8 +1,3 @@
-using CleanCodeApp.Domain.Dependencies.Repositories;
-using CleanCodeApp.Domain.ValueObjects;
-
-namespace CleanCodeApp.Infrastructure.Repositories;
-
 public class TheaterRepository : ITheaterRepository
 {
     private static readonly Theater[] Theaters = [

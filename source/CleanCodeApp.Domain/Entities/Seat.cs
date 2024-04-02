@@ -1,5 +1,3 @@
-namespace CleanCodeApp.Domain.Entities;
-
 public class Seat(string row, int number, int price)
 {
     public string Row { get; private set; } = row;

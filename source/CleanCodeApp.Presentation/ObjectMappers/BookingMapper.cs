@@ -1,8 +1,3 @@
-using CleanCodeApp.Domain.Entities;
-using CleanCodeApp.Presentation.DTOs;
-
-namespace CleanCodeApp.Presentation.ObjectMappers;
-
 public static class BookingMapper
 {
     public static BookingDto ToDto(this Booking source)

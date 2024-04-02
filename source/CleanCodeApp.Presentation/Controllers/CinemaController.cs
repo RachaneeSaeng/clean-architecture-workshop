@@ -1,11 +1,5 @@
-using CleanCodeApp.Application.Services;
-using CleanCodeApp.Presentation.RequestModels;
 using Microsoft.AspNetCore.Mvc;
-using CleanCodeApp.Presentation.ObjectMappers;
-using CleanCodeApp.Presentation.DTOs;
 using System.Globalization;
-
-namespace CleanCodeApp.Presentation.Controllers;
 
 [ApiController]
 public class CinemaController(CinemaService cinemaService) : ControllerBase

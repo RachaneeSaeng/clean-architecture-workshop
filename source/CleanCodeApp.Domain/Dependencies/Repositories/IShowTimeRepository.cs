@@ -1,7 +1,3 @@
-using CleanCodeApp.Domain.Entities;
-
-namespace CleanCodeApp.Domain.Dependencies.Repositories;
-
 public interface IShowTimeRepository
 {
     ShowTime GetById(Guid id);

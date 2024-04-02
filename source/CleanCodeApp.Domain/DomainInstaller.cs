@@ -1,5 +1,4 @@
 using Microsoft.Extensions.DependencyInjection;
-using MovieBooking.Domain.Services;
 
 public static class DomainInstaller
 {

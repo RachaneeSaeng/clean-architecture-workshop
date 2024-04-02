@@ -1,10 +1,4 @@
-﻿using CleanCodeApp.Domain.Dependencies.Repositories;
-using CleanCodeApp.Domain.Entities;
-using MovieBooking.Domain.Services;
-
-namespace CleanCodeApp.Application.Services;
-
-public class CinemaService(IMovieRepository movieRepository,
+﻿public class CinemaService(IMovieRepository movieRepository,
     IShowTimeRepository showTimeRepository,
     IPaymentHttpClient paymentHttpClient,
     BookingService bookingService)

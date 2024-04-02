@@ -1,6 +1,4 @@
-﻿namespace CleanCodeApp.Presentation.DTOs;
-
-public class ShowTimeDto
+﻿public class ShowTimeDto
 {
     public Guid Id { get; set; }
     public DateTime StartTime { get; set; }

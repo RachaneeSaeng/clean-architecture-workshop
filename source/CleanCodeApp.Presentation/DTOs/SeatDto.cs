@@ -1,5 +1,3 @@
-namespace CleanCodeApp.Presentation.DTOs;
-
 public class SeatDto
 {
     public string Row { get; set; }

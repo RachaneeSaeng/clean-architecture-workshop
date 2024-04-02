@@ -1,5 +1,3 @@
-namespace CleanCodeApp.Domain.ValueObjects;
-
 public class Theater(string name, int numberOfRow, int numberOfSeatsPerRow, int seatPrice)
 {
     public string Name { get; private set; } = name;

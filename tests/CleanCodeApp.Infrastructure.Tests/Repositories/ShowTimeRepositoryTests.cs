@@ -1,7 +1,3 @@
-using CleanCodeApp.Infrastructure.Repositories;
-
-namespace CleanCodeApp.Infrastructure.Tests;
-
 public class ShowTimeRepositoryTests
 {
     private readonly DateTime _today = DateTime.Today;
