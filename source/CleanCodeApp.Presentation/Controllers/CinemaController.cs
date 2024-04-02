@@ -2,55 +2,54 @@ using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 
 [ApiController]
-public class CinemaController : ControllerBase
+public class CinemaController(CinemaService cinemaService) : ControllerBase
 {
-    // TODO: replace `object` with class name
+    private readonly CinemaService _cinemaService = cinemaService;
+
     [HttpGet]
     [Route("GetNowShowingMovies")]
-    public IEnumerable<object> GetNowShowingMovies()
+    public IEnumerable<MovieDto> GetNowShowingMovies()
     {
-        // TODO: create an application service or domain service to fetch data from repository and transform to DTO
-        throw new NotImplementedException();
+        var nowShowingMovies = _cinemaService.GetNowShowingMovies();
+        return nowShowingMovies.Select(m => m.ToDto());
     }
 
     [HttpGet]
     [Route("SearchMoviesByTitle/{title}")]
-    public IEnumerable<object> SearchMoviesByTitle([FromRoute] string title)
+    public IEnumerable<MovieDto> SearchMoviesByTitle([FromRoute] string title)
     {
-        throw new NotImplementedException();
+        var movies = _cinemaService.SearchMoviesByTitle(title);
+        return movies.Select(m => m.ToDto());
     }
 
     [HttpGet]
     [Route("GetMovieDetails/{movieId}")]
-    public object GetMovieDetails([FromRoute] Guid movieId)
+    public MovieDto GetMovieDetails([FromRoute] Guid movieId)
     {
-        throw new NotImplementedException();
+        return _cinemaService.GetMovieDetails(movieId).ToDto();
     }
 
     [HttpGet]
-    [Route("GetShowTimesByMovieIdAndDate/{movieId}/{dateStr}")]
-    public IEnumerable<object> GetShowTimesByMovieIdAndDate([FromRoute] Guid movieId, string dateStr)
+    [Route("GetShowTimesByMovieIdAndDate/{movieId}/{date}")]
+    public IEnumerable<ShowTimeDto> GetShowTimesByMovieIdAndDate([FromRoute] Guid movieId, string date)
     {
-        // TODO: create an application service or domain service to fetch data from repository and transform to DTO
-        var date = DateTime.Parse(dateStr, CultureInfo.InvariantCulture);
-
-        throw new NotImplementedException();
+        var showTimes = _cinemaService.GetShowTimesByMovieIdAndDate(movieId, DateTime.Parse(date, CultureInfo.InvariantCulture));
+        return showTimes.ToDto();
     }
 
     [HttpGet]
     [Route("GetShowTimesById/{showtimeId}")]
-    public object GetShowTimesById([FromRoute] Guid showtimeId)
+    public ShowTimeWithSeatsDto GetShowTimesById([FromRoute] Guid showtimeId)
     {
-        throw new NotImplementedException();
+        var showTime = _cinemaService.GetShowTimeById(showtimeId);
+        return showTime.ToDto();
     }
 
     [HttpPost]
     [Route("CreateBooking")]
-    public object CreateBooking([FromBody] object requestModel)
+    public BookingDto CreateBooking([FromBody] CreateBookingRequestModel requestModel)
     {
-        // TODO: create an application service or domain service to create booking and process payment
-        // Create Booking by reserving seats
-        // process payment
-        throw new NotImplementedException();
+        var booking = _cinemaService.CreateBooking(requestModel.ShowtimeId, requestModel.selectedSeatKeys, requestModel.CustomerAccountId);
+        return booking.ToDto();
     }
 }
