@@ -3,36 +3,32 @@ using CleanCodeApp.Domain.Entities;
 
 namespace MovieBooking.Domain.Services;
 
-public class BookingService
+public class BookingService(IShowTimeRepository showtimeRepository, IBookingRepository bookingRepository)
 {
-    private readonly IMovieRepository _movieRepository;
+    private readonly IShowTimeRepository _showtimeRepository = showtimeRepository;
+    private readonly IBookingRepository _bookingRepository = bookingRepository;
 
-    public BookingService(IMovieRepository movieRepository)
+    public Booking CreateBooking(Guid showtimeId, List<string> selectedSeats, string customerAccountId)
     {
-        _movieRepository = movieRepository;
-    }
+        var showtime = _showtimeRepository.GetById(showtimeId) ?? throw new Exception("Showtime not found.");
 
-    public Booking BookTickets(int showtimeId, List<Seat> selectedSeats, string customerAccountId)
-    {
-        // var showtime = _movieRepository.GetShowtimeById(showtimeId);
-        // if (showtime == null) throw new Exception("Showtime not found.");
+        List<Seat> seats = [];
+        try
+        {
+            foreach (var seatStr in selectedSeats)
+            {
+                var seat = showtime.ReserveSeat(seatStr[..1], int.Parse(seatStr[1..]));
+                seats.Add(seat);
+            }
+        }
+        catch (Exception e)
+        {
+            throw new InvalidOperationException("Cannot reserve all specified seats", e);
+        }
 
-        // var pricingService = new DynamicPricingService(); // This could be injected
+        var booking = new Booking(showtime, seats, customerAccountId);
+        _bookingRepository.Save(booking);
 
-        // decimal totalPrice = 0;
-        // foreach (var seat in selectedSeats)
-        // {
-        //     if (!seat.IsAvailable) throw new Exception("One or more selected seats are not available.");
-        //     totalPrice += pricingService.CalculatePrice(seat, showtime);
-        //     seat.Reserve(); // Mark the seat as reserved
-        // }
-
-        // // Create and persist the booking
-        // var booking = new Booking(/* parameters including totalPrice */);
-
-        // // Logic to persist the booking
-        // return booking;
-
-        return null;
+        return booking;
     }
 }

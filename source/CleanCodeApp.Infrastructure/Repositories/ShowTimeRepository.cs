@@ -35,6 +35,11 @@ public class ShowTimeRepository : IShowTimeRepository
         ];
     }
 
+    public ShowTime GetById(Guid id)
+    {
+        return ShowTimes.FirstOrDefault(s => s.Id == id);
+    }
+
     public List<Movie> GetNowShowingMovies()
     {
         return ShowTimes.Where(st => DateTime.Today <= st.StartTime && st.StartTime <= DateTime.Today.AddDays(15))

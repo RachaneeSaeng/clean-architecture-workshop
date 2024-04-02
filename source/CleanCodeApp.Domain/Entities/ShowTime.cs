@@ -12,12 +12,13 @@ public class ShowTime(Movie movie, Theater theater, DateTime startTime, DateTime
     public List<Seat> Seats { get; private set; } = InitialiseSeats(theater.NumberOfRow, theater.SeatsPerRow, theater.SeatPrice);
     public int SeatPrice { get; private set; }
 
-    public void ReserveSeat(string row, int number)
+    public Seat ReserveSeat(string row, int number)
     {
         var seat = Seats.FirstOrDefault(s => s.Row == row && s.Number == number) ??
                     throw new InvalidOperationException("There is no seat ${row}${number} in this showtime");
 
         seat.Reserve();
+        return seat;
     }
 
     private static List<Seat> InitialiseSeats(int numberOfRow, int numberOfSeatsPerRow, int seatPrice)
