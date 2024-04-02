@@ -8,5 +8,5 @@ public interface IShowTimeRepository
 
     List<Movie> GetNowShowingMovies();
 
-    List<ShowTime> GetShowTimesByMovieId(Guid movieId);
+    List<ShowTime> GetShowTimesByMovieIdAndDate(Guid movieId, DateTime date);
 }

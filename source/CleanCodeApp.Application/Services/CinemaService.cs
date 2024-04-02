@@ -29,9 +29,9 @@ public class CinemaService(IMovieRepository movieRepository,
         return _movieRepository.GetById(movieId);
     }
 
-    public List<ShowTime> GetShowTimesByMovieId(Guid movieId)
+    public List<ShowTime> GetShowTimesByMovieIdAndDate(Guid movieId, DateTime date)
     {
-        return _showTimeRepository.GetShowTimesByMovieId(movieId);
+        return _showTimeRepository.GetShowTimesByMovieIdAndDate(movieId, date);
     }
 
     public ShowTime GetShowTimeById(Guid showtimeId)

@@ -1,6 +1,4 @@
-﻿using CleanCodeApp.Domain.ValueObjects;
-
-namespace CleanCodeApp.Presentation.DTOs;
+﻿namespace CleanCodeApp.Presentation.DTOs;
 
 public class ShowTimeDto
 {

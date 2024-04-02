@@ -21,6 +21,7 @@ public class ShowTimeRepository : IShowTimeRepository
         ShowTimes = [
             GenShowTime("John Wick: Chapter 4", "Normal", DateTime.Parse("2023-03-24").AddHours(10.5), DateTime.Parse("2023-03-24").AddHours(14)),
             GenShowTime("John Wick: Chapter 4", "4D", DateTime.Parse("2023-03-24").AddHours(10.5), DateTime.Parse("2023-03-24").AddHours(14)),
+            GenShowTime("Godzilla x Kong: The New Empire", "Normal", today.AddHours(-5), today.AddHours(-3)),
             GenShowTime("Godzilla x Kong: The New Empire", "Normal", today.AddHours(10.5), today.AddHours(13.0)),
             GenShowTime("Kung Fu Panda 4", "Normal", today.AddHours(13.5), today.AddHours(16.0)),
             GenShowTime("Godzilla x Kong: The New Empire", "Normal", today.AddHours(16.5), today.AddHours(19.0)),
@@ -48,8 +49,8 @@ public class ShowTimeRepository : IShowTimeRepository
                         .ToList();
     }
 
-    public List<ShowTime> GetShowTimesByMovieId(Guid movieId)
+    public List<ShowTime> GetShowTimesByMovieIdAndDate(Guid movieId, DateTime date)
     {
-        return ShowTimes.Where(st => st.Movie.Id == movieId).ToList();
+        return ShowTimes.Where(st => st.Movie.Id == movieId && st.StartTime >= date && st.StartTime < date.AddDays(1)).ToList();
     }
 }

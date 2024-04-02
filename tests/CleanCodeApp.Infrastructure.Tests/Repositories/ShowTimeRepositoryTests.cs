@@ -4,6 +4,8 @@ namespace CleanCodeApp.Infrastructure.Tests;
 
 public class ShowTimeRepositoryTests
 {
+    private readonly DateTime _today = DateTime.Today;
+
     [Fact]
     public void TestGetNowShowingMovies()
     {
@@ -21,7 +23,7 @@ public class ShowTimeRepositoryTests
     }
 
     [Fact]
-    public void TestGetShowTimesByMovieId_ValidMovieIdWithShowTimes()
+    public void TestGetShowTimesByMovieIdAndDate_ValidMovieIdAndDate()
     {
         // Arrange
         var movieRepo = new MovieRepository();
@@ -29,14 +31,14 @@ public class ShowTimeRepositoryTests
         var showtimeRepo = new ShowTimeRepository(movieRepo, theaterRepo);
 
         // Act
-        var showTimes = showtimeRepo.GetShowTimesByMovieId(movieRepo.SearchByTitle("John Wick").First().Id);
+        var showTimes = showtimeRepo.GetShowTimesByMovieIdAndDate(movieRepo.SearchByTitle("Godzilla x Kong").First().Id, _today);
 
         // Assert
-        Assert.Equal(2, showTimes.Count);
+        Assert.Equal(3, showTimes.Count);
     }
 
     [Fact]
-    public void TestGetShowTimesByMovieId_ValidMovieIdWithoutShowTimes()
+    public void TestGetShowTimesByMovieIdAndDate_ValidMovieIdButNoShowTimesForTheDate()
     {
         // Arrange
         var movieRepo = new MovieRepository();
@@ -44,14 +46,14 @@ public class ShowTimeRepositoryTests
         var showtimeRepo = new ShowTimeRepository(movieRepo, theaterRepo);
 
         // Act
-        var showTimes = showtimeRepo.GetShowTimesByMovieId(movieRepo.SearchByTitle("Joker").First().Id);
+        var showTimes = showtimeRepo.GetShowTimesByMovieIdAndDate(movieRepo.SearchByTitle("John Wick: Chapter 4").First().Id, _today);
 
         // Assert
         Assert.Empty(showTimes);
     }
 
     [Fact]
-    public void TestGetShowTimesByMovieId_InvalidMovieId()
+    public void TestGetShowTimesByMovieIdAndDate_ValidMovieIdWithoutShowTimesAtAll()
     {
         // Arrange
         var movieRepo = new MovieRepository();
@@ -59,7 +61,22 @@ public class ShowTimeRepositoryTests
         var showtimeRepo = new ShowTimeRepository(movieRepo, theaterRepo);
 
         // Act
-        var showTimes = showtimeRepo.GetShowTimesByMovieId(Guid.NewGuid());
+        var showTimes = showtimeRepo.GetShowTimesByMovieIdAndDate(movieRepo.SearchByTitle("Joker").First().Id, _today);
+
+        // Assert
+        Assert.Empty(showTimes);
+    }
+
+    [Fact]
+    public void TestGetShowTimesByMovieIdAndDate_InvalidMovieId()
+    {
+        // Arrange
+        var movieRepo = new MovieRepository();
+        var theaterRepo = new TheaterRepository();
+        var showtimeRepo = new ShowTimeRepository(movieRepo, theaterRepo);
+
+        // Act
+        var showTimes = showtimeRepo.GetShowTimesByMovieIdAndDate(Guid.NewGuid(), _today);
 
         // Assert
         Assert.Empty(showTimes);

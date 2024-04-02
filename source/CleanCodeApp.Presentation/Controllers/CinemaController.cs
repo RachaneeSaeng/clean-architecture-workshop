@@ -3,6 +3,7 @@ using CleanCodeApp.Presentation.RequestModels;
 using Microsoft.AspNetCore.Mvc;
 using CleanCodeApp.Presentation.ObjectMappers;
 using CleanCodeApp.Presentation.DTOs;
+using System.Globalization;
 
 namespace CleanCodeApp.Presentation.Controllers;
 
@@ -35,10 +36,10 @@ public class CinemaController(CinemaService cinemaService) : ControllerBase
     }
 
     [HttpGet]
-    [Route("GetShowTimesByMovieId/{movieId}")]
-    public IEnumerable<ShowTimeDto> GetShowTimesByMovieId([FromRoute] Guid movieId)
+    [Route("GetShowTimesByMovieIdAndDate/{movieId}/{date}")]
+    public IEnumerable<ShowTimeDto> GetShowTimesByMovieIdAndDate([FromRoute] Guid movieId, string date)
     {
-        var showTimes = _cinemaService.GetShowTimesByMovieId(movieId);
+        var showTimes = _cinemaService.GetShowTimesByMovieIdAndDate(movieId, DateTime.Parse(date, CultureInfo.InvariantCulture));
         return showTimes.ToDto();
     }
 
