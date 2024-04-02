@@ -2,9 +2,9 @@ using Microsoft.AspNetCore.Mvc;
 using System.Globalization;
 
 [ApiController]
-public class CinemaController(CinemaService cinemaService) : ControllerBase
+public class CinemaController : ControllerBase
 {
-    private readonly CinemaService _cinemaService = cinemaService;
+    private readonly CinemaService _cinemaService = CinemaService.Instance;
 
     [HttpGet]
     [Route("GetNowShowingMovies")]

@@ -1,5 +1,17 @@
 public class BookingService(ShowTimeRepository showtimeRepository, BookingRepository bookingRepository)
 {
+    // NOTE: Singleton instance may not be the best practice to create new instance of object
+    // we use in just to accelerate development speed of the workshop only
+    private static BookingService _instance;
+    public static BookingService Instance
+    {
+        get
+        {
+            _instance ??= new BookingService(ShowTimeRepository.Instance, BookingRepository.Instance);
+            return _instance;
+        }
+    }
+
     private readonly ShowTimeRepository _showtimeRepository = showtimeRepository;
     private readonly BookingRepository _bookingRepository = bookingRepository;
 

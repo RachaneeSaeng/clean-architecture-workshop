@@ -3,6 +3,18 @@ public class CinemaService(MovieRepository movieRepository,
     DefaultPaymentHttpClient paymentHttpClient,
     BookingService bookingService)
 {
+    // NOTE: Singleton instance may not be the best practice to create new instance of object
+    // we use in just to accelerate development speed of the workshop only
+    private static CinemaService _instance;
+    public static CinemaService Instance
+    {
+        get
+        {
+            _instance ??= new CinemaService(MovieRepository.Instance, ShowTimeRepository.Instance, DefaultPaymentHttpClient.Instance, BookingService.Instance);
+            return _instance;
+        }
+    }
+
     private readonly MovieRepository _movieRepository = movieRepository;
     private readonly ShowTimeRepository _showTimeRepository = showTimeRepository;
     private readonly DefaultPaymentHttpClient _paymentHttpClient = paymentHttpClient;
