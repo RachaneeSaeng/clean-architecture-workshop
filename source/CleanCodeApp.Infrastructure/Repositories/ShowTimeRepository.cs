@@ -1,5 +1,17 @@
 public class ShowTimeRepository
 {
+    // NOTE: Singleton instance may not be the best practice to create new instance of object
+    // we use in just to accelerate development speed of the workshop only
+    private static ShowTimeRepository _instance;
+    public static ShowTimeRepository Instance
+    {
+        get
+        {
+            _instance ??= new ShowTimeRepository(MovieRepository.Instance, TheaterRepository.Instance);
+            return _instance;
+        }
+    }
+
     private readonly List<ShowTime> ShowTimes;
 
     // this is just a temp constructor to mock up ShowTimes data
