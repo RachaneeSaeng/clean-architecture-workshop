@@ -4,9 +4,10 @@ using System.Globalization;
 [ApiController]
 public class CinemaController : ControllerBase
 {
+    // TODO: replace `object` with class name
     [HttpGet]
     [Route("GetNowShowingMovies")]
-    public IEnumerable<MovieDto> GetNowShowingMovies()
+    public IEnumerable<object> GetNowShowingMovies()
     {
         // TODO: create an application service or domain service to fetch data from repository and transform to DTO
         throw new NotImplementedException();
@@ -14,21 +15,21 @@ public class CinemaController : ControllerBase
 
     [HttpGet]
     [Route("SearchMoviesByTitle/{title}")]
-    public IEnumerable<MovieDto> SearchMoviesByTitle([FromRoute] string title)
+    public IEnumerable<object> SearchMoviesByTitle([FromRoute] string title)
     {
         throw new NotImplementedException();
     }
 
     [HttpGet]
     [Route("GetMovieDetails/{movieId}")]
-    public MovieDto GetMovieDetails([FromRoute] Guid movieId)
+    public object GetMovieDetails([FromRoute] Guid movieId)
     {
         throw new NotImplementedException();
     }
 
     [HttpGet]
     [Route("GetShowTimesByMovieIdAndDate/{movieId}/{dateStr}")]
-    public IEnumerable<ShowTimeDto> GetShowTimesByMovieIdAndDate([FromRoute] Guid movieId, string dateStr)
+    public IEnumerable<object> GetShowTimesByMovieIdAndDate([FromRoute] Guid movieId, string dateStr)
     {
         // TODO: create an application service or domain service to fetch data from repository and transform to DTO
         var date = DateTime.Parse(dateStr, CultureInfo.InvariantCulture);
@@ -38,14 +39,14 @@ public class CinemaController : ControllerBase
 
     [HttpGet]
     [Route("GetShowTimesById/{showtimeId}")]
-    public ShowTimeWithSeatsDto GetShowTimesById([FromRoute] Guid showtimeId)
+    public object GetShowTimesById([FromRoute] Guid showtimeId)
     {
         throw new NotImplementedException();
     }
 
     [HttpPost]
     [Route("CreateBooking")]
-    public BookingDto CreateBooking([FromBody] CreateBookingRequestModel requestModel)
+    public object CreateBooking([FromBody] object requestModel)
     {
         // TODO: create an application service or domain service to create booking and process payment
         // Create Booking by reserving seats
