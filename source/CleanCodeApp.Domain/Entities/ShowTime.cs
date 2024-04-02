@@ -9,7 +9,7 @@ public class ShowTime(Movie movie, Theater theater, DateTime startTime, DateTime
     public DateTime StartTime { get; private set; } = startTime;
     public DateTime EndTime { get; private set; } = endTime;
     public Theater Theater { get; private set; } = theater;
-    public List<Seat> Seats { get; private set; } = InitialiseSeats(theater.NumberOfRow, theater.NumberOfSeatsPerRow, theater.SeatPrice);
+    public List<Seat> Seats { get; private set; } = InitialiseSeats(theater.NumberOfRow, theater.SeatsPerRow, theater.SeatPrice);
     public int SeatPrice { get; private set; }
 
     public void ReserveSeat(string row, int number)
