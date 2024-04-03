@@ -1,17 +1,11 @@
-using CleanCodeApp.Domain.Dependencies.Repositories;
 using CleanCodeApp.Domain.Entities;
 
 namespace CleanCodeApp.Domain.Services;
 
-public class BookingService(IShowTimeRepository showtimeRepository, IBookingRepository bookingRepository)
+public class BookingService
 {
-    private readonly IShowTimeRepository _showtimeRepository = showtimeRepository;
-    private readonly IBookingRepository _bookingRepository = bookingRepository;
-
-    public Booking CreateBooking(Guid showtimeId, List<string> selectedSeats, string customerAccountId)
+    public Booking CreateBooking(ShowTime showtime, List<string> selectedSeats, string customerAccountId)
     {
-        var showtime = _showtimeRepository.GetById(showtimeId) ?? throw new Exception("Showtime not found.");
-
         List<Seat> seats = [];
         try
         {
@@ -26,9 +20,6 @@ public class BookingService(IShowTimeRepository showtimeRepository, IBookingRepo
             throw new InvalidOperationException("Cannot reserve all specified seats", e);
         }
 
-        var booking = new Booking(showtime, seats, customerAccountId);
-        _bookingRepository.Save(booking);
-
-        return booking;
+        return new Booking(showtime, seats, customerAccountId);
     }
 }

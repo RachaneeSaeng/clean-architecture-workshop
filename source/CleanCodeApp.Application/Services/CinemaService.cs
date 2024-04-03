@@ -4,15 +4,17 @@ using CleanCodeApp.Domain.Services;
 
 namespace CleanCodeApp.Application.Services;
 
-public class CinemaService(IMovieRepository movieRepository,
+public class CinemaService(BookingService bookingService,
+IBookingRepository bookingRepository,
+    IMovieRepository movieRepository,
     IShowTimeRepository showTimeRepository,
-    IPaymentHttpClient paymentHttpClient,
-    BookingService bookingService)
+    IPaymentHttpClient paymentHttpClient)
 {
+    private readonly BookingService _bookingService = bookingService;
+    private readonly IBookingRepository _bookingRepository = bookingRepository;
     private readonly IMovieRepository _movieRepository = movieRepository;
     private readonly IShowTimeRepository _showTimeRepository = showTimeRepository;
     private readonly IPaymentHttpClient _paymentHttpClient = paymentHttpClient;
-    private readonly BookingService _bookingService = bookingService;
 
     public List<Movie> GetNowShowingMovies()
     {
@@ -43,13 +45,17 @@ public class CinemaService(IMovieRepository movieRepository,
     {
         // ensure that seat is in format {row}{number} such as A10
 
+        var showtime = _showTimeRepository.GetById(showtimeId) ?? throw new Exception("Showtime not found.");
+
         try
         {
-            var booking = _bookingService.CreateBooking(showtimeId, selectedSeats, customerAccountId);
+            var booking = _bookingService.CreateBooking(showtime, selectedSeats, customerAccountId);
 
             _paymentHttpClient.ProcessPayment(booking);
 
             booking.CompletePayment();
+
+            _bookingRepository.Save(booking);
 
             return booking;
         }

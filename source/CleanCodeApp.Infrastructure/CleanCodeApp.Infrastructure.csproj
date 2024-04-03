@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <ItemGroup>
-    <ProjectReference Include="..\CleanCodeApp.Domain\CleanCodeApp.Domain.csproj" />
+    <ProjectReference Include="..\CleanCodeApp.Application\CleanCodeApp.Application.csproj" />
   </ItemGroup>
 
   <ItemGroup>
