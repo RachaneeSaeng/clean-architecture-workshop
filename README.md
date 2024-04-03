@@ -2,12 +2,6 @@
 
 This repository is created to be a workshop codebase to learn the [Clean Architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html).
 
-There are 3 branches in this repository, which are
-
-- **main** : the workshop workspace. It consist of incompleted code in an improper layers that require architecturing and implementing to acheive the system requirement.
-- **n-tier_architecture** : a working example that implemented using the [N-Tier architecture](https://stackify.com/n-tier-architecture/) to solve the problem. We can learn from this example the disadvantages of dependency on external party.
-- **clean_architecture** : a working example that implemented using the [Clean architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) to solve the problem. We can learn this at the end of the workshop to get the idea of how to structure and implement logic in Clean style.
-
 ## Workshop Scenario
 
 In this workshop we will implement a Cinema System to support _ticket purchasing_ use case.
@@ -17,7 +11,7 @@ In this workshop we will implement a Cinema System to support _ticket purchasing
 This may be an example user interface of a cinema system when a user try to search for a movie and book a show time.
 
 ![Screenshot 2567-03-27 at 11.55.59](https://i.imgur.com/i7gWBJr.png)
-<img src="https://i.imgur.com/bZ7ayPV.png" alt="cinema-seats" width="450"/>
+<img src="https://i.imgur.com/bZ7ayPV.png" alt="cinema-seats" width="500"/>
 
 #### User stories for ticket purchasing use case
 
@@ -35,7 +29,7 @@ _NOTE:_
 
 ## Code base
 
-In this repository, we already provides some key entities and classes to save time crafting them.
+In this repository, we already provided some key entities and classes to save time crafting them.
 
 ### Class diagrams of some key entities
 
@@ -86,37 +80,22 @@ classDiagram
     }
 ```
 
-Branch name [solution-break-depency](https://github.com/rachanee-tw/dotrez-training-clean/tree/solution-break-dependency)
+Currently the codebase is incompleted. Most of classes be put in a temporary folder `CleanCodeApp.Domain/ToBeStructured` and most of them have only properties defined but methods. Meaning there is no logic to solve the user stories yet.
 
-### N-Tier Architecture Dependency Graph
+## TODO
 
-```mermaid
-flowchart TD
-    a("Presentation"):::presentation
-    b{{"Application"}}:::app
-    c{{"Domain"}}:::domain
-    d("Infrastructure"):::infra
-    a --> b --> c --> d
-    classDef presentation fill:#fcf990
-    classDef app fill:#fca2a2
-    classDef domain fill:#a2fca8
-    classDef infra fill:#a2acfc
-```
+In the workshop you have to
 
-Branch name [solution](https://github.com/rachanee-tw/dotrez-training-clean/tree/solution)
+1. Structure classes in proper layer/folder.​
+   - Moving classes around may cause issue of missing reference. You can run command to add project reference to allow referencing class from other domain. For example,
+     `dotnet add tests/CleanCodeApp.Application reference source/CleanCodeApp.Domain`
+2. Implement logic to _GetNowShowingMovies_, _GetShowTimesByMovieIdAndDate_ and _CreateBooking​_. You have to consider where to put the logic. You may put it in existing class or create a new class for it.
+   ![Screenshot 2567-04-03 at 14.56.10](https://i.imgur.com/MhbmLqA.png)
 
-### Clean Architecture Dependency Graph
+## Other Branches
 
-```mermaid
-flowchart TD
-   a("Presentation"):::presentation
-    b{{"Application"}}:::app
-    c{{"Domain"}}:::domain
-    d("Infrastructure"):::infra
-    a --> b --> c
-    d --> c
-    classDef presentation fill:#fcf990
-    classDef app fill:#fca2a2
-    classDef domain fill:#a2fca8
-    classDef infra fill:#a2acfc
-```
+There are 3 branches in this repository, which are
+
+- **main** (this branch) : the workshop workspace. It consist of incompleted code in an improper layers that require architecturing and implementing to acheive the system requirement.
+- **n-tier_architecture** : a working example that implemented using the [N-Tier architecture](https://stackify.com/n-tier-architecture/) to solve the problem. We can learn the disadvantages of dependencies on external parties from this branch.
+- **clean_architecture** : a working example that implemented using the [Clean architecture](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html) to solve the problem. We can learn this at the end of the workshop to get the idea of how to structure and implement logic in Clean style.
