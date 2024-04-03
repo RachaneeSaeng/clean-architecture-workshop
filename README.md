@@ -80,11 +80,27 @@ classDiagram
     }
 ```
 
-Currently the codebase is incompleted. Most of classes be put in a temporary folder `CleanCodeApp.Domain/ToBeStructured` and most of them have only properties defined but methods. Meaning there is no logic to solve the user stories yet.
+### Initial data
+
+Some data have be put into the key entities to setup movies and showtime data. You can see code to initialise data in Repositories.
+
+**Theaters**
+<img src="https://i.imgur.com/QOiJFiP.png" alt="cinema-seats" width="300"/>
+
+**Movies**
+<img src="https://i.imgur.com/hkCLrOg.png" alt="cinema-seats" width="500"/>
+
+**Showtimes**
+<img src="https://i.imgur.com/w6tRCkN.png" alt="cinema-seats" width="800"/>
+Note:
+
+- There are some movies having past showtimes and some movies having no showtimes. This to demonstrate the _GetNowShowingMovies_ method.
+- `today.AddHours(19.5)` = Today 19:30
 
 ## TODO
 
-In the workshop you have to
+You may see that currently the codebase is incompleted. Most of classes be put in a temporary folder `CleanCodeApp.Domain/ToBeStructured` and most of them have only properties defined but methods. Meaning there is no logic to solve the user stories yet.
+So, In this workshop you have to
 
 1. Structure classes in proper layer/folder.​
    - Moving classes around may cause issue of missing reference. You can run command to add project reference to allow referencing class from other domain. For example,
