@@ -4,12 +4,14 @@ using System.Globalization;
 [ApiController]
 public class CinemaController : ControllerBase
 {
-    // TODO: replace `object` with class name
+    // TODO: 1. Organize and structure files in CleanCodeApp.Domain/ToBeStructured folder to be in a proper layer and folder
+    // TODO: 2. replace `object` with proper class name
+
     [HttpGet]
     [Route("GetNowShowingMovies")]
     public IEnumerable<object> GetNowShowingMovies()
     {
-        // TODO: create an application service or domain service to fetch data from repository and transform to DTO
+        // TODO: 3. Implement logic to fetch data from repository in a proper (new or existing) class then transform to DTO
         throw new NotImplementedException();
     }
 
@@ -31,7 +33,7 @@ public class CinemaController : ControllerBase
     [Route("GetShowTimesByMovieIdAndDate/{movieId}/{dateStr}")]
     public IEnumerable<object> GetShowTimesByMovieIdAndDate([FromRoute] Guid movieId, string dateStr)
     {
-        // TODO: create an application service or domain service to fetch data from repository and transform to DTO
+        // TODO: 4. Implement logic to fetch data from repository in a proper (new or existing) class then transform to DTO
         var date = DateTime.Parse(dateStr, CultureInfo.InvariantCulture);
 
         throw new NotImplementedException();
@@ -48,9 +50,9 @@ public class CinemaController : ControllerBase
     [Route("CreateBooking")]
     public object CreateBooking([FromBody] object requestModel)
     {
-        // TODO: create an application service or domain service to create booking and process payment
-        // Create Booking by reserving seats
-        // process payment
+        // TODO: 5. Implement logic to create booking and process payment in a proper (new or existing) class then transform to DTO 
+        // 5.1 Create Booking by reserving seats
+        // 5.2 Process payment
         throw new NotImplementedException();
     }
 }
