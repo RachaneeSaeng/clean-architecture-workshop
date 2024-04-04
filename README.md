@@ -20,8 +20,8 @@ flowchart TD
     a --> b --> c
     d -- dependency invesion --> b
 
-    classDef presentation fill:#faf287
+    classDef presentation fill:#A8DE67
     classDef app fill:#f77777
-    classDef domain fill:#A8DE67
+    classDef domain fill:#faf287
     classDef infra fill:#7cbdf2
 ```
